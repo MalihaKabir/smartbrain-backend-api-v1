@@ -7,4 +7,4 @@
 3. *Run npm start*
 
 ** Make sure you use postgreSQL instead of mySQL for this code base. 
-** Postman is also a nice option to see the output.
+** Postman is a nice option to see the output.
