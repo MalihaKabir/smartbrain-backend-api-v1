@@ -4,8 +4,8 @@ const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 
 const app = express();
-app.use(bodyParser.json());
 app.use(cors());
+app.use(bodyParser.json());
 
 const database = {
 	users: [
@@ -13,7 +13,7 @@ const database = {
 			id: '123',
 			name: 'John',
 			email: 'john@gmail.com',
-			password: 'johnDoe',
+			password: '123',
 			entries: 0,
 			joined: new Date()
 		},
@@ -21,7 +21,7 @@ const database = {
 			id: '456',
 			name: 'Sally',
 			email: 'sally@gmail.com',
-			password: 'sallyDane',
+			password: '456',
 			entries: 0,
 			joined: new Date()
 		}
@@ -35,28 +35,37 @@ const database = {
 	]
 };
 
-// root route:
+// basic/root route:
 app.get('/', (req, res) => {
+	// res.send('this is working!');
 	res.send(database.users);
 });
 
+// signin route:
 app.post('/signin', (req, res) => {
 	// Load hash from your password DB.
-	bcrypt.compare('dollyJane', '$2a$10$boaEETa9f6Xbjdx.YbdTfuayhsHi.FlSLApDNx2hDfFMvKTox2ECy', function(err, res) {
-		// console.log('first guess', res);
+	// Comparing two passwords:
+	bcrypt.compare('789', '$2a$10$jzGIDKxX1KQL3TMnPA7jduWGMJybDTNgKvRydanlbTcfXD/A2yDtu', function(err, res) {
+		console.log('first guess', res);
 	});
-	bcrypt.compare('veggies', '$2a$10$boaEETa9f6Xbjdx.YbdTfuayhsHi.FlSLApDNx2hDfFMvKTox2ECy', function(err, res) {
-		// console.log('second guess', res);
+	bcrypt.compare('veggies', '$2a$10$jzGIDKxX1KQL3TMnPA7jduWGMJybDTNgKvRydanlbTcfXD/A2yDtu', function(err, res) {
+		console.log('second guess', res);
 	});
 	if (req.body.email === database.users[0].email && req.body.password === database.users[0].password) {
-		// res.json('success!');
+		// Change:
+		// res.json('Succed!');
+		// To:
 		res.json(database.users[0]);
+	} else {
+		res.status(400).json('error logging in');
 	}
-	res.status(400).json('error logging in');
 });
 
+// register/new user route:
 app.post('/register', (req, res) => {
+	// we want email, name, password from req.body:
 	const { name, email, password } = req.body;
+	// TO CHECK how HASH work:
 	// bcrypt.hash(password, null, null, function(err, hash) {
 	// 	console.log(hash);
 	// });
@@ -64,12 +73,14 @@ app.post('/register', (req, res) => {
 		id: '789',
 		name: name,
 		email: email,
+		password: password,
 		entries: 0,
 		joined: new Date()
 	});
 	res.json(database.users[database.users.length - 1]);
 });
 
+// id of users:
 app.get('/profile/:id', (req, res) => {
 	const { id } = req.params;
 	let found = false;
@@ -84,11 +95,11 @@ app.get('/profile/:id', (req, res) => {
 	}
 });
 
-app.put('/entries', (req, res) => {
+app.put('/image', (req, res) => {
 	const { id } = req.body;
 	let found = false;
 	database.users.forEach((user) => {
-		if (id === user.id) {
+		if (user.id === id) {
 			found = true;
 			user.entries++;
 			return res.json(user.entries);
@@ -104,8 +115,8 @@ app.listen(3001, () => {
 });
 
 // Things To-Do:
-// root route: res = this is working
-// signin --> POST & res = success/fail (you want to secure your password. hence, signin is a POST req.)
-// register --> POST & res = the new user object
-// profile/:userId(so each user has own home-screen) --> GET & res = user
-// rank or image end point --> PUT & res = counted num of rank
+// root route('/') --> GET --> res = this is working,
+// signin route --> POST --> res = success/fail,
+// register --> POST --> return = user,
+// profile/:userId --> GET --> ret = user,
+// image (end point) --> PUT --> res = count/entries.
