@@ -8,4 +8,4 @@
 
 **Make sure you use PostgreSQL instead of MySQL for this code base.**
 
-** Also clone and run [SmartBrain-v2](https://github.com/MalihaKabir/SmartBrain-v2) to connect this API with its frontend part and see the full app.
+** Also, clone and run [SmartBrain-v2](https://github.com/MalihaKabir/SmartBrain-v2) to connect this API with its frontend part and see the full app.
