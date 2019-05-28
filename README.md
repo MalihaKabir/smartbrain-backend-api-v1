@@ -13,6 +13,6 @@ This **SmartBrain App** is a face recognition app built with **NodeJS**. This is
 
 You can also check **[SmartBrain-API-v2-forDatabase](https://github.com/MalihaKabir/SmartBrain-API-v2-forDatabase)** to connect this app with its database.
 
-#### Screenshot:
+### Screenshot:
 
 ![screencapture-localhost-3000-2019-04-27-00_40_11](https://user-images.githubusercontent.com/43598622/56923892-7a1c9e00-6aed-11e9-9bad-324a42949b69.jpg)
