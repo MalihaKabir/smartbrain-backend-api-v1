@@ -7,7 +7,7 @@ This **SmartBrain App** is a face recognition app built with **NodeJS**. This is
 1. *Clone this repo,*
 2. *Run npm install,*
 3. *Run npm start,*
-4. Also, clone and run **[SmartBrain-v2](https://github.com/MalihaKabir/SmartBrain-v2)** to connect this API with its frontend part and see the full app.
+4. *Also, clone and run **[SmartBrain-v2](https://github.com/MalihaKabir/SmartBrain-v2)** to connect this API with its frontend part and see the full app*.
 
 ** **Make sure you use PostgreSQL instead of MySQL for this code base.**
 
