@@ -15,4 +15,5 @@ You can also check **[SmartBrain-API-v2-forDatabase](https://github.com/MalihaKa
 
 ### Screenshot:
 
-![screencapture-localhost-3000-2019-04-27-00_40_11](https://user-images.githubusercontent.com/43598622/56923892-7a1c9e00-6aed-11e9-9bad-324a42949b69.jpg)
+![screencapture-localhost-3000-2019-06-07-00_32_55](https://user-images.githubusercontent.com/43598622/59057513-5acb1a80-88bc-11e9-82be-9efc010a4814.jpg)
+
